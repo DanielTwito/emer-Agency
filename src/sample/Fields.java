@@ -1,25 +1,23 @@
 package sample;
 
 public enum Fields {
-                     //complaint Tabel
-                     complaintId,
-                     complaintOwner,
-
-                    //complaint Request Table
+                    //complaintRequest Table
                      requestId,
+                     content,
+                     owner,
+                     complaintUser,
+                     isApproved,
 
                     //events Table
                     eventId,
                     time,
                     status,
                     headLine,
-                    firstUpdate,
 
-                    //updates Table
+                    //eventUpdates Table
                     date,
                     updateId,
                     description,
-                    firsVersion,
 
                     //userss Table
                     userName,
