@@ -9,6 +9,7 @@ import javafx.util.Pair;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Main extends Application {
 
@@ -16,7 +17,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         AccessLayer al = new AccessLayer();
-        al.connectDB("C:\\Users\\Daniel\\dbEmer.db");
+        al.connectDB("Database/dbEmer.db");
         ArrayList<Pair> a = new ArrayList<>();
 //        a.add(new Pair(Fields.userName,"netanco"));
 //        a.add(new Pair(Fields.name,"netanelCohen"));
@@ -25,11 +26,15 @@ public class Main extends Application {
 //        a.add(new Pair(Fields.score,"3.5"));
 //        a.add(new Pair(Fields.userStatus,"blabla"));
 //        a.add(new Pair(Fields.email,"blabla@bla.com"));
-        a.add(new Pair(Fields.password,"123456"));
-        al.DeleteEntry(Tables.users,a);
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 300, 275));
+//        a.add(new Pair(Fields.userName,"netanco"));
+//        ArrayList<HashMap<String, String>> x= al.ReadEntries(a,Tables.users);
+//        for (HashMap<String, String> stringStringHashMap : x) {
+//            System.out.println(stringStringHashMap);
+//        }
+
+        Parent root = FXMLLoader.load(getClass().getResource("adminPanel.fxml"));
+        primaryStage.setTitle("Emergency app");
+        primaryStage.setScene(new Scene(root, 1000, 700));
         primaryStage.show();
     }
 

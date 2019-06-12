@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.UserPanel">
+
+
+    <children>
+        <GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="246.0" minHeight="9.600004196166992" prefHeight="165.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="378.0000118255615" minHeight="10.0" prefHeight="162.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="654.0" minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="351.0" prefWidth="687.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                <Button fx:id="addEvent" alignment="CENTER" mnemonicParsing="false" onAction="#AddEvent" prefHeight="26.0" prefWidth="134.0" style="-fx-background-color: #77afff;" text="Add Event" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                    <effect>
+                        <DropShadow />
+                    </effect>
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin></Button>
+                <Label fx:id="warning" prefHeight="27.0" prefWidth="236.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                    <font>
+                        <Font name="Verdana" size="11.0" />
+                    </font>
+                </Label>
+                <Label prefHeight="34.0" prefWidth="136.0" style="-fx-text-fill: #3388DD;" text="admin panel" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                    <font>
+                        <Font name="Harrington" size="21.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets bottom="200.0" top="200.0" />
+                    </GridPane.margin>
+               <padding>
+                  <Insets left="10.0" />
+               </padding>
+                </Label>
+                <Button fx:id="addUpdate" alignment="CENTER" mnemonicParsing="false" onAction="#AddUpdate" prefHeight="26.0" prefWidth="134.0" style="-fx-background-color: #77afff;" text="Add Update" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+                    <effect>
+                        <DropShadow />
+                    </effect>
+                    <GridPane.margin>
+                        <Insets />
+                    </GridPane.margin>
+                </Button>
+            </children>
+        </GridPane>
+    </children>
+
+</AnchorPane>

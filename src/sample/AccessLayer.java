@@ -5,9 +5,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class AccessLayer {
+public  class AccessLayer {
 
-    private Connection connection;
+    private static Connection connection;
 
 
     public void connectDB(String db_name){

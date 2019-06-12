@@ -1,3 +1,3 @@
 package sample;
 
-public enum Tables {users,eventUpdates,events,complaintsRequests}
+public enum Tables {users,eventUpdates,events,complaintsRequests,organizationMembers}
