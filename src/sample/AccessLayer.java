@@ -16,6 +16,7 @@ public  class AccessLayer {
             connection = DriverManager.getConnection("jdbc:sqlite:" + db_name);
         }
         catch(Exception e) {
+            e.printStackTrace();
             System.out.println("could not establish a connection to database");
         }
     }

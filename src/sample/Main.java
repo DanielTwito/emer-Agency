@@ -17,7 +17,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         AccessLayer al = new AccessLayer();
-        al.connectDB("Database/dbEmer.db");
+        al.connectDB("db/dbEmer.db");
         ArrayList<Pair> a = new ArrayList<>();
 //        a.add(new Pair(Fields.userName,"netanco"));
 //        a.add(new Pair(Fields.name,"netanelCohen"));
@@ -32,7 +32,7 @@ public class Main extends Application {
 //            System.out.println(stringStringHashMap);
 //        }
 
-        Parent root = FXMLLoader.load(getClass().getResource("adminPanel.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("userPanel.fxml"));
         primaryStage.setTitle("Emergency app");
         primaryStage.setScene(new Scene(root, 1000, 700));
         primaryStage.show();
