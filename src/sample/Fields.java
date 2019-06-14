@@ -13,10 +13,12 @@ public enum Fields {
                     time,
                     status,
                     headLine,
+                    categoryName,
+                    representiveName_events,
 
                     //eventUpdates Table
                     date,
-                    updateId,
+                    version,
                     description,
 
                     //userss Table
@@ -30,5 +32,12 @@ public enum Fields {
 
                     //organizationMembers Tables
                     organization,
+
+                    //representive
+                    representiveName,
+                    representivePassword,
+
+                    //permissions
+                    permission,
 
     }

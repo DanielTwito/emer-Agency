@@ -3,7 +3,6 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.util.Pair;
 
 import java.util.ArrayList;
@@ -33,19 +32,20 @@ public class UserPanel implements userAction {
             System.out.println("event is NULL");
             return;
         }
-        createAndUpdate(des, event);
+        createAnUpdate(des, event);
         System.out.println("update added");
     }
 
-    private void createAndUpdate(String des, Event event){
+    private void createAnUpdate(String des, Event event){
         Date date = new Date(System.currentTimeMillis());
-        Update update = new Update(date, des, null, event);//TODO fix user
+        String s=date.toString();/////// hadar-i changed the date to string!!!
+        Update update = new Update(s, des, null, event);//TODO fix user
         AccessLayer al = new AccessLayer();
         al.connectDB("db/dbEmer.db");
         ArrayList<Pair> a = new ArrayList<>();
         //TODO add event id to db
         a.add(new Pair(Fields.date,update.getDate()));
-        a.add(new Pair(Fields.updateId,update.getEvent().getId()));
+        a.add(new Pair(Fields.version,update.getEvent().getId()));
         a.add(new Pair(Fields.description,update.getDescription()));
 
         al.AddEntry(a,Tables.eventUpdates);

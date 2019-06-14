@@ -32,7 +32,7 @@ public class Main extends Application {
 //            System.out.println(stringStringHashMap);
 //        }
 
-        Parent root = FXMLLoader.load(getClass().getResource("userPanel.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
         primaryStage.setTitle("Emergency app");
         primaryStage.setScene(new Scene(root, 1000, 700));
         primaryStage.show();
