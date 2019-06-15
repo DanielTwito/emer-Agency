@@ -47,6 +47,7 @@ public class LoginForm {
                             stage.setTitle("Admin Panel");
                             stage.setScene(new Scene(root, 800, 600));
                             AdminPanel rfv = fxmlLoader.getController();
+                            rfv.setLoggedUser(user);
                             stage.show();
                             ((Node) (event.getSource())).getScene().getWindow().hide();
 

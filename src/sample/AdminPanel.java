@@ -36,6 +36,7 @@ public class AdminPanel implements  userAction {
     TableColumn<ComplaintRequest, String> buttons;
 
     private AccessLayer al = new AccessLayer();
+    private String loggedUser;
 
 
     @FXML
@@ -58,7 +59,7 @@ public class AdminPanel implements  userAction {
     private List<ComplaintRequest> getComplaintRequests() {
 //        ArrayList<HashMap<String, String>> a = new ArrayList<>();
         ArrayList<Pair> a = new ArrayList<>();
-//        a.add(new Pair(Fields.owner,"netanco"));
+        a.add(new Pair(Fields.owner,this.loggedUser));
         ArrayList<HashMap<String, String>> ResList = al.ReadEntries(new ArrayList<Pair>(),Tables.complaintsRequests);
         return getComplaintRequestList(ResList);
     }
@@ -191,5 +192,9 @@ public class AdminPanel implements  userAction {
     @Override
     public void AddUpdate(ActionEvent actionEvent) {
         System.out.println("update added!");
+    }
+
+    public void setLoggedUser(String user) {
+        this.loggedUser = user;
     }
 }
