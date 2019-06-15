@@ -27,6 +27,7 @@ public class AdminPanel implements  userAction {
     public TableView table;
     public Button addEvent;
 
+
     TableColumn<ComplaintRequest, String> id;
     TableColumn<ComplaintRequest, String> owner;
     TableColumn<ComplaintRequest, String> subject;
@@ -50,14 +51,14 @@ public class AdminPanel implements  userAction {
 
 
     public void setRecommendedListings() {
-        ObservableList<ComplaintRequest> list = FXCollections.observableArrayList(getRecommendedVacations());
+        ObservableList<ComplaintRequest> list = FXCollections.observableArrayList(getComplaintRequests());
         table.setItems(list);
     }
 
-    private List<ComplaintRequest> getRecommendedVacations() {
+    private List<ComplaintRequest> getComplaintRequests() {
 //        ArrayList<HashMap<String, String>> a = new ArrayList<>();
         ArrayList<Pair> a = new ArrayList<>();
-        a.add(new Pair(Fields.owner,"netanco"));
+//        a.add(new Pair(Fields.owner,"netanco"));
         ArrayList<HashMap<String, String>> ResList = al.ReadEntries(new ArrayList<Pair>(),Tables.complaintsRequests);
         return getComplaintRequestList(ResList);
     }
@@ -70,8 +71,8 @@ public class AdminPanel implements  userAction {
             StringProperty owner = new SimpleStringProperty(paired.get(Fields.owner+""));
             StringProperty subject =  new SimpleStringProperty(paired.get(Fields.complaintUser+""));
             StringProperty content =   new SimpleStringProperty(paired.get(Fields.content+""));
-            boolean f =   paired.get(Fields.isApproved+"").equals ("true");
-            StringProperty isApp  = f ? new SimpleStringProperty( "true" ) : new SimpleStringProperty( "false" ) ;
+//            boolean f =   paired.get(Fields.isApproved+"").equals ("waiting");
+            StringProperty isApp  = new SimpleStringProperty( "waiting" );
             StringProperty reqId =     new SimpleStringProperty(paired.get(Fields.requestId+""));
            l.add(new ComplaintRequest(content,
                subject,

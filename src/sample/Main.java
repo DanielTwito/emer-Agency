@@ -17,7 +17,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         AccessLayer al = new AccessLayer();
-        al.connectDB("db/dbEmer.db");
+        al.connectDB("Database/dbEmer.db");
         ArrayList<Pair> a = new ArrayList<>();
 //        a.add(new Pair(Fields.userName,"netanco"));
 //        a.add(new Pair(Fields.name,"netanelCohen"));
@@ -34,7 +34,7 @@ public class Main extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
         primaryStage.setTitle("Emergency app");
-        primaryStage.setScene(new Scene(root, 1000, 700));
+        primaryStage.setScene(new Scene(root, 564, 280));
         primaryStage.show();
     }
 

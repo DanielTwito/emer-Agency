@@ -29,6 +29,8 @@ public enum Fields {
                     score,
                     userStatus,
                     email,
+                    isAdmin,
+                    warrings,
 
                     //organizationMembers Tables
                     organization,
