@@ -17,6 +17,7 @@ public class AddComplaintScreen {
     public Button sendRequset;
     public TextArea userName;
     private String owner;
+    private String org;
     private AccessLayer al = new AccessLayer();
     public void AddUcomplaintRequest(ActionEvent actionEvent) {
 
@@ -30,6 +31,7 @@ public class AddComplaintScreen {
             a.add(new Pair(Fields.owner, this.owner));
             a.add(new Pair(Fields.complaintUser, userName.getText()+""));
             a.add(new Pair(Fields.isApproved, complaintRequestStatus.waiting+""));
+            a.add(new Pair(Fields.organization, this.org));
             try {
                 al.AddEntry(a, Tables.complaintsRequests);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -85,6 +87,11 @@ public class AddComplaintScreen {
 
     public void setComplaintOwner(String owner){
         this.owner = owner;
+        ArrayList<Pair> tmp = new ArrayList<>();
+        tmp.add(new Pair(Fields.userName,this.owner));
+        ArrayList<HashMap<String, String>> check = al.ReadEntries(tmp, Tables.organizationMembers);
+        this.org = check.get(0).get("organization")+"";
+
 
     }
 

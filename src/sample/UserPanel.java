@@ -87,7 +87,7 @@ public class UserPanel implements userAction {
             AddComplaintScreen rfv = fxmlLoader.getController();
             rfv.setComplaintOwner(this.loogedUser);
             stage.show();
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+//            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
 
         }
         catch (IOException e) {

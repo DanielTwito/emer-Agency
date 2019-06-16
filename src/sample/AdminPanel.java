@@ -77,8 +77,11 @@ public class AdminPanel implements  userAction {
             StringProperty subject =  new SimpleStringProperty(paired.get(Fields.complaintUser+""));
             StringProperty content =   new SimpleStringProperty(paired.get(Fields.content+""));
 //            boolean f =   paired.get(Fields.isApproved+"").equals ("waiting");
-            StringProperty isApp  = new SimpleStringProperty( "waiting" );
+            StringProperty isApp  = new SimpleStringProperty( paired.get(Fields.isApproved+""));
             StringProperty reqId =     new SimpleStringProperty(paired.get(Fields.requestId+""));
+            if(!isApp.getValue().equals("waiting")){
+                continue;
+            }
            l.add(new ComplaintRequest(content,
                subject,
                owner,
