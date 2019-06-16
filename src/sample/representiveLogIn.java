@@ -18,6 +18,7 @@ public class representiveLogIn {
     public javafx.scene.control.TextField f_UserName;
     public javafx.scene.control.TextField f_Password;
     private Stage stage;
+    private Stage mainStage;
 
 
 
@@ -34,7 +35,7 @@ public class representiveLogIn {
         if(response.get(Fields.representiveName+"").equals(user)) {
             if (response.get(Fields.representivePassword + "").equals(pass)) {
                 stage.close();//close the log in window
-                openRepresentiveStage();//open the even creation window
+                openRepresentiveStage();//open the event creation window
             }
         }
         else{showAlert("One or more details are incorrect"); }
@@ -51,7 +52,7 @@ public class representiveLogIn {
             stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
             addEvent event=fxmlLoader.getController();
-            event.init(f_UserName.getText());
+            event.init(f_UserName.getText(),this.stage,mainStage,stage);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -64,7 +65,8 @@ public class representiveLogIn {
         alert.show();
     }
 
-    public void setStage(Stage stage) {
-        this.stage = stage;
+    public void setStage(Stage stage1, Stage mainStage) {
+        this.stage = stage1;
+        this.mainStage=mainStage;
     }
 }

@@ -1,15 +1,13 @@
 package sample;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Separator;
+import javafx.stage.Stage;
 import javafx.util.Pair;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,13 +23,25 @@ public class addEvent {
     public javafx.scene.control.CheckBox fire;
     public javafx.scene.control.CheckBox mada;
     private String representiveName;
+    private Stage mainstage;
+    private Stage stage;
+    private Stage eventStage;
 
 
-    public void init(String representiveName){
+    public void init(String representiveName,Stage loginStage,Stage mainstage,Stage eventStage){
         category.setItems(FXCollections.observableArrayList(
                 "Fire","Security","Criminal")
         );
         this.representiveName=representiveName;
+        this.mainstage=mainstage;
+        this.stage=loginStage;
+        this.eventStage=eventStage;
+    }
+
+    public void backToMain(ActionEvent event){
+        eventStage.close();
+        mainstage.show();
+
     }
 
     public void addEvent(ActionEvent event) {

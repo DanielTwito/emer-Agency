@@ -3,13 +3,9 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.stage.Modality;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
@@ -24,11 +20,22 @@ public class UserPanel implements userAction {
     @FXML
     private TextArea Description;
     @FXML
-    private TextArea idEvent;
+    private ListView selector;
     private String loogedUser;
 
-
-
+    @FXML
+    public void initialize(){
+        AccessLayer al = new AccessLayer();
+        al.connectDB("dbEmer.db");
+        ArrayList<Pair> a = new ArrayList<>();
+        ArrayList<HashMap<String, String>> res = al.ReadEntries(a,Tables.events);
+        ArrayList<EventItem> items = new ArrayList<>();
+        for(HashMap map: res){
+            items.add(new EventItem((String)map.get("eventId"),(String)map.get("headLine"),(String)map.get("status")));
+        }
+        selector.getItems().addAll(items.toArray());
+        selector.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    }
     @Override
     public void AddEvent(ActionEvent actionEvent) {
         System.out.println("event added!");
@@ -37,7 +44,9 @@ public class UserPanel implements userAction {
 
     @Override
     public void AddUpdate(ActionEvent actionEvent) {
-        String ev = this.idEvent.getText();
+        if((this.selector.getSelectionModel().getSelectedItems().get(0))==null)
+            return;
+        String ev = ((EventItem)this.selector.getSelectionModel().getSelectedItems().get(0)).getId();
         String des = this.Description.getText();
         Event event = this.getEvent(ev);
         if (event == null){
@@ -47,6 +56,10 @@ public class UserPanel implements userAction {
             return;
         }
         createAnUpdate(des, event);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Update Added!");
+        alert.show();
+        this.Description.setText("");
         System.out.println("update added");
     }
 
@@ -84,7 +97,7 @@ public class UserPanel implements userAction {
         Parent root;
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            root = fxmlLoader.load(getClass().getResource("addComplaintScreen.fxml").openStream());
+            root = fxmlLoader.load(getClass().getResource("sample/addComplaintScreen.fxml").openStream());
             Stage stage = new Stage();
             stage.setTitle("Sign Up");
             stage.setScene(new Scene(root, 650, 400));

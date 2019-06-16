@@ -6,14 +6,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.HashMap;
 

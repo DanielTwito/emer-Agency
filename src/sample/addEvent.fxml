@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="649.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.addEvent">
+<AnchorPane prefHeight="649.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.addEvent">
    <children>
       <Label layoutX="159.0" layoutY="42.0" text="Add Event Details">
          <font>
@@ -26,10 +26,11 @@
       <Label layoutX="61.0" layoutY="172.0" text="First Update Description:" />
       <Label layoutX="69.0" layoutY="325.0" text="Category:" />
       <Label layoutX="62.0" layoutY="365.0" text="Choose Organization in order to send alert to one of its users:" />
-      <Button fx:id="btn_addEvent" layoutX="251.0" layoutY="568.0" mnemonicParsing="false" onAction="#addEvent" text="Add Event" />
+      <Button fx:id="btn_addEvent" layoutX="383.0" layoutY="569.0" mnemonicParsing="false" onAction="#addEvent" text="Add Event" />
       <Label layoutX="62.0" layoutY="225.0" text="Date:" />
       <DatePicker fx:id="date" layoutX="351.0" layoutY="219.0" prefHeight="39.0" prefWidth="238.0" />
       <Label layoutX="62.0" layoutY="272.0" text="Time:" />
       <TextField fx:id="time" layoutX="358.0" layoutY="266.0" />
+      <Button fx:id="btn_addEvent1" layoutX="104.0" layoutY="569.0" mnemonicParsing="false" onAction="#backToMain" text="Back to main app" />
    </children>
 </AnchorPane>

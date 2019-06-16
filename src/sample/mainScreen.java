@@ -7,8 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.WindowEvent;
 
 import java.io.IOException;
 
@@ -16,6 +14,7 @@ public class mainScreen {
     public javafx.scene.control.Button btn_LogInAsUser;
     public javafx.scene.control.Button btn_LogInAsAdmin;
     public javafx.scene.control.Button btn_LogInAsRepresentive;
+    private Stage stage;
 
     public void Login(ActionEvent event) {
         Stage stage=new Stage();
@@ -28,7 +27,7 @@ public class mainScreen {
             stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);
             representiveLogIn representiveLogIn=fxmlLoader.getController();
-            representiveLogIn.setStage(stage);
+            representiveLogIn.setStage(stage,this.stage);
             stage.show();
             ((Node)(event.getSource())).getScene().getWindow().hide();
 
@@ -57,5 +56,9 @@ public class mainScreen {
         catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
     }
 }

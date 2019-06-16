@@ -7,9 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
-import javax.swing.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Main extends Application {
 
@@ -32,9 +30,12 @@ public class Main extends Application {
 //            System.out.println(stringStringHashMap);
 //        }
 
-        Parent root = FXMLLoader.load(getClass().getResource("mainScreen.fxml"));
+        FXMLLoader fxmlLoader=new FXMLLoader();
+        Parent root = fxmlLoader.load(getClass().getResource("mainScreen.fxml").openStream());
         primaryStage.setTitle("Emergency app");
         primaryStage.setScene(new Scene(root, 564, 280));
+        mainScreen m=fxmlLoader.getController();
+        m.setStage(primaryStage);
         primaryStage.show();
     }
 

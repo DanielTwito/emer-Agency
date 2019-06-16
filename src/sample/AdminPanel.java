@@ -137,7 +137,7 @@ public class AdminPanel implements  userAction {
                             Parent root;
                             try {
                                 FXMLLoader fxmlLoader = new FXMLLoader();
-                                root = fxmlLoader.load(getClass().getResource("ViewComplaintRequest.fxml").openStream());
+                                root = fxmlLoader.load(getClass().getResource("sample/ViewComplaintRequest.fxml").openStream());
                                 Stage stage = new Stage();
                                 stage.setTitle("view complaint contant");
                                 stage.setScene(new Scene(root, 600, 600));
