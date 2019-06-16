@@ -23,7 +23,7 @@ public class mainScreen {
         FXMLLoader fxmlLoader=new FXMLLoader();
         try {
             Parent root=fxmlLoader.load(getClass().getResource("representiveLogIn.fxml").openStream());
-            Scene scene=new Scene(root,600,600);
+            Scene scene=new Scene(root,821,462);
             //scene.getStylesheets().add(getClass().getResource("ViewStyle.css").toExternalForm());
             stage.setScene(scene);
             stage.initModality(Modality.APPLICATION_MODAL);

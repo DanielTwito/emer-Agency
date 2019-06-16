@@ -35,8 +35,17 @@ public class addEvent {
     }
 
     public void addEvent(ActionEvent event) {
-        if(date.getValue().equals("")||time.getText().equals("")||eventHeadLine.getText().equals("")){
+
+        if(date.getValue()==null||date.getValue().equals("")||time.getText().equals("")||eventHeadLine.getText().equals("")){
             showAlert("Please fill all fields");
+            return;
+        }
+        if(!police.isSelected()&&!mada.isSelected()&&!fire.isSelected()){
+            showAlert("Please choose one or more organization\nIn order to send a massenge to one of its users.");
+            return;
+        }
+        if(category.getValue()==null){
+            showAlert("Please select the event category");
             return;
         }
         int eventid=getMaxIdFromDB();
@@ -46,7 +55,7 @@ public class addEvent {
         String eventTime=date+"  "+time+"";
         Event event1 = new Event(eventId, eventTime, "active", this.eventHeadLine.getText());
         AccessLayer al = new AccessLayer();
-        al.connectDB("db/dbEmer.db");
+        al.connectDB("dbEmer.db");
         ArrayList<Pair> a = new ArrayList<>();
         //TODO add event id to db
         a.add(new Pair(Fields.eventId,event1.id));
@@ -88,7 +97,7 @@ public class addEvent {
     private String sendMsgToUser(String organization, String eventId) {
         //read user from this organization
         AccessLayer al = new AccessLayer();
-        al.connectDB("db/dbEmer.db");
+        al.connectDB("dbEmer.db");
         ArrayList<Pair> tmp = new ArrayList<>();
         tmp.add(new Pair(Fields.organization,organization));
         ArrayList<HashMap<String, String>> userCheck = al.ReadEntries(tmp, Tables.organizationMembers);
@@ -97,7 +106,7 @@ public class addEvent {
         String user=response.get("userName");
 
         //insert permittion for user at this event
-        al.connectDB("db/dbEmer.db");
+        al.connectDB("dbEmer.db");
         ArrayList<Pair> a = new ArrayList<>();
         //TODO add event id to db
         a.add(new Pair(Fields.eventId,eventId));
@@ -115,7 +124,7 @@ public class addEvent {
         Update update = new Update(date,FirstDescription.getText(), null, event1);
         event1.setHead(update);
         AccessLayer al = new AccessLayer();
-        al.connectDB("db/dbEmer.db");
+        al.connectDB("dbEmer.db");
         ArrayList<Pair> a = new ArrayList<>();
         a.add(new Pair(Fields.date,date));
         a.add(new Pair(Fields.eventId,event1.id));
