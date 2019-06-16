@@ -35,6 +35,7 @@
                   <DropShadow />
                </effect>
             </Button>
+            <Label fx:id="msg" layoutX="113.0" layoutY="62.0" prefHeight="17.0" prefWidth="453.0" />
          </children></AnchorPane>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
          <children>

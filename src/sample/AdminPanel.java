@@ -26,6 +26,7 @@ public class AdminPanel implements  userAction {
     public Label warning;
     public TableView table;
     public Button addEvent;
+    private String loggedUser;
 
 
     TableColumn<ComplaintRequest, String> id;
@@ -36,13 +37,11 @@ public class AdminPanel implements  userAction {
     TableColumn<ComplaintRequest, String> buttons;
 
     private AccessLayer al = new AccessLayer();
-    private String loggedUser;
 
 
     @FXML
     public void initialize(){
         iniTable();
-        setRecommendedListings();
     }//end initialize
 
     public void addNewUser(ActionEvent actionEvent) {
@@ -59,8 +58,13 @@ public class AdminPanel implements  userAction {
     private List<ComplaintRequest> getComplaintRequests() {
 //        ArrayList<HashMap<String, String>> a = new ArrayList<>();
         ArrayList<Pair> a = new ArrayList<>();
-        a.add(new Pair(Fields.owner,this.loggedUser));
-        ArrayList<HashMap<String, String>> ResList = al.ReadEntries(new ArrayList<Pair>(),Tables.complaintsRequests);
+        a.add(new Pair(Fields.userName,this.loggedUser+""));
+        ArrayList<HashMap<String, String>> ResList = al.ReadEntries(a,Tables.organizationMembers);
+        String adminOrg = ResList.get(0).get(Fields.organization+"");
+
+        a = new ArrayList<>();
+        a.add(new Pair(Fields.organization,adminOrg));
+        ResList = al.ReadEntries(a,Tables.complaintsRequests);
         return getComplaintRequestList(ResList);
     }
 
@@ -130,11 +134,12 @@ public class AdminPanel implements  userAction {
                             Parent root;
                             try {
                                 FXMLLoader fxmlLoader = new FXMLLoader();
-                                root = fxmlLoader.load(getClass().getResource("loginForm.fxml").openStream());
+                                root = fxmlLoader.load(getClass().getResource("ViewComplaintRequest.fxml").openStream());
                                 Stage stage = new Stage();
                                 stage.setTitle("view complaint contant");
-                                stage.setScene(new Scene(root, 300, 300));
-                                LoginForm viewvacation = fxmlLoader.getController();
+                                stage.setScene(new Scene(root, 600, 600));
+                                ViewComplaintRequest viewComplaintRequest = fxmlLoader.getController();
+                                viewComplaintRequest.setDetails(item);
                                 stage.show();
 
                             } catch (IOException x) {
@@ -197,4 +202,5 @@ public class AdminPanel implements  userAction {
     public void setLoggedUser(String user) {
         this.loggedUser = user;
     }
+
 }

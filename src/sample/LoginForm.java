@@ -48,6 +48,7 @@ public class LoginForm {
                             stage.setScene(new Scene(root, 800, 600));
                             AdminPanel rfv = fxmlLoader.getController();
                             rfv.setLoggedUser(user);
+                            rfv.setRecommendedListings();
                             stage.show();
                             ((Node) (event.getSource())).getScene().getWindow().hide();
 
@@ -64,6 +65,8 @@ public class LoginForm {
                             stage.setScene(new Scene(root, 800, 600));
                             UserPanel rfv = fxmlLoader.getController();
                             rfv.setLoogedUser(user);
+
+                            rfv.showUserDetails();
                             stage.show();
                             ((Node) (event.getSource())).getScene().getWindow().hide();
 

@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -18,6 +19,7 @@ import java.util.HashMap;
 
 public class UserPanel implements userAction {
 
+    public Label msg;
     @FXML
     private TextArea Description;
     @FXML
@@ -95,6 +97,16 @@ public class UserPanel implements userAction {
 
     public void setLoogedUser(String loogedUser) {
         this.loogedUser = loogedUser;
+    }
+
+    public void showUserDetails() {
+        AccessLayer al = new AccessLayer();
+        ArrayList<Pair> tmp = new ArrayList<>();
+        tmp.add(new Pair(Fields.userName, loogedUser));
+        ArrayList<HashMap<String, String>> userCheck = al.ReadEntries(tmp, Tables.users);
+        String userRank = userCheck.get(0).get(Fields.rank+"");
+        String userWarning = userCheck.get(0).get(Fields.warrings+"");
+        msg.setText("hello "+ loogedUser+" your'e rank is : "+userRank+" "+" total warning : "+userWarning+"");
     }
 }
 
