@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.stage.Modality;
@@ -40,7 +41,9 @@ public class UserPanel implements userAction {
         String des = this.Description.getText();
         Event event = this.getEvent(ev);
         if (event == null){
-            System.out.println("event is NULL");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("This event is not exist");
+            alert.show();
             return;
         }
         createAnUpdate(des, event);
@@ -52,11 +55,12 @@ public class UserPanel implements userAction {
         String s=date.toString();/////// hadar-i changed the date to string!!!
         Update update = new Update(s, des, null, event);//TODO fix user
         AccessLayer al = new AccessLayer();
-        al.connectDB("Database/dbEmer.db");
+        al.connectDB("dbEmer.db");
         ArrayList<Pair> a = new ArrayList<>();
         //TODO add event id to db
+        a.add(new Pair(Fields.eventId, update.getEvent().getId()));
         a.add(new Pair(Fields.date,update.getDate()));
-        a.add(new Pair(Fields.version,update.getEvent().getId()));
+        a.add(new Pair(Fields.version,""+this.getMaxVersion(update.getEvent().getId())));
         a.add(new Pair(Fields.description,update.getDescription()));
 
         al.AddEntry(a,Tables.eventUpdates);
@@ -64,7 +68,7 @@ public class UserPanel implements userAction {
 
     private Event getEvent(String id){
         AccessLayer al = new AccessLayer();
-        al.connectDB("Database/dbEmer.db");
+        al.connectDB("dbEmer.db");
         ArrayList<Pair> a = new ArrayList<>();
         a.add(new Pair(Fields.eventId,id));
         ArrayList<HashMap<String, String>> res = al.ReadEntries(a,Tables.events);
@@ -107,6 +111,16 @@ public class UserPanel implements userAction {
         String userRank = userCheck.get(0).get(Fields.rank+"");
         String userWarning = userCheck.get(0).get(Fields.warrings+"");
         msg.setText("hello "+ loogedUser+" your'e rank is : "+userRank+" "+" total warning : "+userWarning+"");
+    }
+
+    private int getMaxVersion(String id) {
+        AccessLayer al = new AccessLayer();
+        al.connectDB("dbEmer.db");
+        ArrayList<Pair> a = new ArrayList<>();
+        a.add(new Pair(Fields.eventId, id));
+        ArrayList<HashMap<String, String>> res = al.ReadEntries(a, Tables.eventUpdates);
+        int x = res.size();
+        return x;
     }
 }
 

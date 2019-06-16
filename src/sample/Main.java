@@ -17,7 +17,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         AccessLayer al = new AccessLayer();
-        al.connectDB("Database/dbEmer.db");
+        al.connectDB("dbEmer.db");
         ArrayList<Pair> a = new ArrayList<>();
 //        a.add(new Pair(Fields.userName,"netanco"));
 //        a.add(new Pair(Fields.name,"netanelCohen"));

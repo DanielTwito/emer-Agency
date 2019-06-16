@@ -23,7 +23,7 @@ public class AddComplaintScreen {
 
         Date date = new Date(System.currentTimeMillis());
         String s=date.toString();
-        al.connectDB("Database/dbEmer.db");
+        al.connectDB("dbEmer.db");
         boolean valid = validate();
         if(valid) {
             ArrayList<Pair> a = new ArrayList<>();

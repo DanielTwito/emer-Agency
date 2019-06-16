@@ -20,7 +20,7 @@ public class ViewComplaintRequest {
 
     public void acceptComplaimt(ActionEvent actionEvent) {
         AccessLayer al = new AccessLayer();
-        al.connectDB("Database/dbEmer.db");
+        al.connectDB("dbEmer.db");
         ArrayList<Pair> tmp = new ArrayList<>();
         tmp.add(new Pair(Fields.userName, subject));
         ArrayList<HashMap<String, String>> userCheck = al.ReadEntries(tmp, Tables.users);
@@ -59,7 +59,7 @@ public class ViewComplaintRequest {
 
     public void rejectComplaimt(ActionEvent actionEvent) {
         AccessLayer al = new AccessLayer();
-        al.connectDB("Database/dbEmer.db");
+        al.connectDB("dbEmer.db");
         ArrayList<Pair> tmp = new ArrayList<>();
         tmp.add(new Pair(Fields.requestId,this.complaintId));
         al.UpdateEntries(Tables.complaintsRequests,Fields.isApproved, "'"+String.valueOf(complaintRequestStatus.rejected+"'"),tmp);
